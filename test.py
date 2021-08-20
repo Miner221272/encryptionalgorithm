@@ -1,4 +1,4 @@
-test_str = "a"
+test_str = input("Enter message:")
 res = ''.join(format(ord(i), '08b') for i in test_str)
 alphabet = ("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
 digArr = []
@@ -12,8 +12,6 @@ for i in res:
     a.append(i)
 for i in a:
     digArr.append(int(i))
-print(digArr)
-print("starting to print the string in bianary")
 last = digArr[0]
 finalArray = []
 if last == 0:
@@ -43,4 +41,7 @@ if bCount > 0:
 if aCount > 0:
     finalArray.append(aCount)
     aCount = 0
-print( finalArray)
+stringversion = ""
+for i in finalArray:
+	stringversion+=str(i)
+print(stringversion)
