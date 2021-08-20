@@ -1,6 +1,6 @@
 test_str = "a"
 res = ''.join(format(ord(i), '08b') for i in test_str)
-alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+alphabet = ("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
 digArr = []
 a = []
 last = ""
@@ -14,40 +14,33 @@ for i in a:
     digArr.append(int(i))
 print(digArr)
 print("starting to print the string in bianary")
-last = a[0]
+last = digArr[0]
 finalArray = []
+if last == 0:
+    aCount += 1
+elif last == 1:
+    bCount += 1
+size = len(digArr)
 for i in digArr:
+    
     if index > 0:
-        if i == last:
-            if i == 0:
-                aCount += 1
-            if i == 1:
-                bCount += 1
-        elif i is not last:
-            if i == 0:
-                aCount += 1     
-                finalArray.append(aCount)
-                aCount = 0
-            if i == 1:
-                bCount += 1
-                finalArray.append(alphabet[bCount])
-                bCount = 0
-    elif index < 1:
-        if i == 0:
-            aCount += 1
         if i == 1:
             bCount += 1
-    index+=1    
+            if i != last:
+                finalArray.append(aCount)
+                aCount = 0
+        if i == 0:
+            aCount += 1
+            if i != last:
+                finalArray.append(alphabet[bCount  - 1])
+                bCount = 0
     last = i
+    index+=1
+
 if bCount > 0:
-    finalArray.append(aCount)
+    finalArray.append(alphabet[bCount - 1])
+    bCount = 0
 if aCount > 0:
-    finalArray.append(alphabet[bCount])
-aCount = 0
-bCount = 0
-finalArray.pop(0)
-lastOne = []
-for i in finalArray:
-    if i is not 0:
-        lastOne.append(i)
-print(lastOne)
+    finalArray.append(aCount)
+    aCount = 0
+print( finalArray)
